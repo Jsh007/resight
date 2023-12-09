@@ -1,0 +1,52 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "react-native/react-native": true
+  },
+  "extends": [
+    "xo",
+    "plugin:react/recommended",
+    "prettier",
+    "plugin:react-native/all",
+    "plugin:import/recommended"
+  ],
+  "overrides": [
+    {
+      "extends": ["xo-typescript"],
+      "files": ["*.ts", "*.tsx"]
+    }
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "Project": "./tsconfig.json"
+  },
+  "plugins": ["react", "react-native", "@typescript-eslint", "import"],
+  "rules": {
+    // allow .js files to contain JSX code
+    "react/jsx-filename-extension": [1, {"extensions": [".tsx", ".jsx"]}],
+    // prevent eslint to complain about the "styles" variable being used before it was defined
+    "no-use-before-define": ["error", {"variables": false}],
+    // ignore errors for the react-navigation package
+    "react/prop-types": [
+      "error",
+      {"ignore": ["navigation", "navigation.navigate"]}
+    ],
+    // ignore errors for import directives
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ]
+  }
+}
